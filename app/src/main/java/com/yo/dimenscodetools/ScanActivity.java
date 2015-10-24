@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.yo.libs.app.Capture;
+import com.yo.libs.app.DimensCodeTools;
 
 
 /**
@@ -33,16 +33,16 @@ public class ScanActivity extends Activity {
 	 * @param view
 	 */
 	public void start(View view) {
-		Capture.startScan(this);
+		DimensCodeTools.startScan(this);
 		// 开启扫描条形码
-		// Capture.startScanWithFeature(this, ScanParams.BARCODE_FEATURES);
+		// DimensCodeTools.startScanWithFeature(this, ScanParams.BARCODE_FEATURES);
 		// 开启扫描条形码 指定所有参数
-		// Capture.startScan(this, ScanParams.BARCODE_FEATURES, 500, 250, 500,
+		// DimensCodeTools.startScan(this, ScanParams.BARCODE_FEATURES, 500, 250, 500,
 		// 500);
 		// 指定条行码扫描大小
-		// Capture.starScanWithBarSize(this, 500, 250);
+		// DimensCodeTools.starScanWithBarSize(this, 500, 250);
 		// 指定二维码扫描大小
-		// Capture.starScanWithQRSize(this, 500, 500);
+		// DimensCodeTools.starScanWithQRSize(this, 500, 500);
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class ScanActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		String res = Capture.scanForResult(requestCode, resultCode, data);
+		String res = DimensCodeTools.scanForResult(requestCode, resultCode, data);
 		if (res !=null) {
 			Pattern p = Pattern.compile("[0-9]*");
 			Matcher m = p.matcher(res);
